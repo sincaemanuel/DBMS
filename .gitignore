@@ -1,9 +1,6 @@
 
 /eSQL/*.suo
 /eSQL/packages
-
-/eSQL/eSQL/bin
-
 /eSQL/eSQL/obj
 
 /eSQL/eSQL/mongo references
