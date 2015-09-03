@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Databases>
+  <DataBase dataBaseName="University">
+    <Tables>
+      <Table tableName="Specialization" fileName="Spec.bin" rowLength="53">
+        <Structure>
+          <!-- attributeName, type can be elements instead of attributes in xml -->
+          <Attribute attributeName="Specid" type="char" length="3" isnull="0" />
+          <Attribute attributeName="SpecName" type="varchar" length="30" isnull="0" />
+          <Attribute attributeName="Language" type="varchar" length="20" isnull="0" />
+        </Structure>
+        <primaryKey>
+          <pkAttribute>Specid</pkAttribute>
+          <!--  can be more attributes in primary key-->
+        </primaryKey>
+        <uniqueKeys>
+          <UniqueAttribute>SpecName</UniqueAttribute>
+        </uniqueKeys>
+        <IndexFiles>
+          <!-- for primary keys there will be index files by default-->
+          <IndexFile indexName="SpecName.ind" keyLength="30" isUnique="1" indexType="BTree">
+            <IndexAttributes>
+              <IAttribute>SpecName</IAttribute>
+              <!--  can be more attributes in index key-->
+            </IndexAttributes>
+          </IndexFile>
+        </IndexFiles>
+      </Table>
+      <Table tableName="Groups" fileName="Groups.bin" rowLength="6">
+        <Structure>
+          <!-- attributeName, type can be elements instead of attributes in xml -->
+          <Attribute attributeName="Groupid" type="char" length="3" isnull="0" />
+          <Attribute attributeName="Specid" type="char" length="3" isnull="0" />
+        </Structure>
+        <primaryKey>
+          <pkAttribute>Groupid</pkAttribute>
+        </primaryKey>
+        <foreignKeys>
+          <foreignKey>
+            <fkAttribute>Specid</fkAttribute>
+            <!--  can be more attributes in foreign key-->
+            <references>
+              <refTable>Specialization</refTable>
+              <refAttribute>Specid</refAttribute>
+              <!--  can be more attributes in referenced key-->
+            </references>
+          </foreignKey>
+        </foreignKeys>
+        <IndexFiles>
+          <!-- for primary keys there will be index files by default-->
+          <IndexFile indexName="SpecOnGroup.ind" keyLength="3" isUnique="0" indexType="BTree">
+            <IndexAttributes>
+              <IAttribute>Specid</IAttribute>
+              <!--  can be more attributes in index key-->
+              <!--  attributes can be referenced by position too  -->
+            </IndexAttributes>
+          </IndexFile>
+        </IndexFiles>
+      </Table>
+      <Table tableName="NewTable" fileName="NewTable.bin" rowLength="0">
+        <Structure>
+          <Attribute attributeName="MyName" type="int" length="0" isnull="1" />
+          <Attribute attributeName="ThirdColumn" type="datetime" length="0" isnull="1" />
+        </Structure>
+      </Table>
+      <Table tableName="g" fileName="g.bin" rowLength="0">
+        <Structure>
+          <Attribute attributeName="czczxv" type="int" length="0" isnull="0" />
+          <Attribute attributeName="zvxcvcv" type="varchar" length="0" isnull="0" />
+        </Structure>
+        <primaryKey>
+          <pkAttribute>zvxcvcv</pkAttribute>
+        </primaryKey>
+        <uniqueKeys />
+        <foreignKeys />
+      </Table>
+    </Tables>
+    <!-- there can be users with permisions or replication or
+          views or other database objects  -->
+  </DataBase>
+  <!-- can be more databases in one xml structure file -->
+  <DataBase dataBaseName="NewDatabase">
+    <Tables>
+      <Table tableName="New Table" fileName="NewTable.bin" rowLength="0">
+        <Structure>
+          <Attribute attributeName="First Column" type="int" length="0" isnull="1" />
+        </Structure>
+      </Table>
+      <Table tableName="dfshghn" fileName="dfshghn.bin" rowLength="0">
+        <Structure>
+          <Attribute attributeName="col1" type="varchar" length="25" isnull="" />
+          <Attribute attributeName="col2" type="int" length="10" isnull="0" />
+        </Structure>
+        <primaryKey>
+          <pkAttribute>col1</pkAttribute>
+          <pkAttribute>col2</pkAttribute>
+        </primaryKey>
+        <uniqueKeys>
+          <UniqueAttribute>col1</UniqueAttribute>
+        </uniqueKeys>
+        <foreignKeys>
+          <foreignKey>
+            <fkAttribute>col1</fkAttribute>
+            <references>
+              <refTable>Groups</refTable>
+              <refAttribute>Groupid</refAttribute>
+            </references>
+          </foreignKey>
+          <foreignKey>
+            <fkAttribute>col2</fkAttribute>
+            <references>
+              <refTable>Specialization</refTable>
+              <refAttribute>Specid</refAttribute>
+            </references>
+          </foreignKey>
+        </foreignKeys>
+      </Table>
+    </Tables>
+  </DataBase>
+  <DataBase dataBaseName="mydb">
+    <Tables>
+      <Table tableName="table" fileName="table.ns" rowLength="0">
+        <Structure>
+          <Attribute attributeName="column1" type="varchar" length="0" isnull="0" />
+          <Attribute attributeName="column2" type="int" length="0" isnull="0" />
+          <Attribute attributeName="column3" type="int" length="0" isnull="0" />
+          <Attribute attributeName="column4" type="varchar" length="0" isnull="0" />
+          <Attribute attributeName="column5" type="int" length="0" isnull="0" />
+        </Structure>
+        <primaryKey>
+          <pkAttribute>column3</pkAttribute>
+          <pkAttribute>column5</pkAttribute>
+        </primaryKey>
+        <uniqueKeys />
+        <foreignKeys />
+      </Table>
+    </Tables>
+  </DataBase>
+</Databases>
